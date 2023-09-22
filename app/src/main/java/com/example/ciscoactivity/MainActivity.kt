@@ -1,17 +1,39 @@
-package com.example.randomnumbergenerator;
+package com.example.ciscoactivity
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+        class MainActivity : AppCompatActivity {
+            private lateinit var Motivational Quotes: Button
+            private lateinit var Love Quotes: Button
+            private lateinit var Favorite Quotes: Button
 
-import java.util.Random;
+                    override fun onCreate(savedInstanceState: Bundle?) {
+                        super.onCreate(savedInstanceState)
+                        setContentView(R.layout.activity_main)
+                        Motivational Quote = findViewById(R.id.Motivational Quote)
+                        Love Quote = findViewById(R.id.Love Quote)
+                        Favorite Quote = findViewById(R.id.Favorite Quote)
 
-public class MainActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final Random numRandom = new Random();
+                        Motivational Quote.setOnClickListener {
+                            startQuotesActivity("Motivational Quote")
+                        }
+                        Love Quote.setOnClickListener {
+                            startQuotesActivity("Love Quote")
+                        }
+                        Favorite Quote.setOnClickListener{
+                            startFavoritesActivity()
+                        }
+
+                        private fun startQuotesActivty(quoteType: String) {
+                            val intent = Intent(this, QuotesActivity::class.java)
+                            intent.putExtra("quoteType", quoteType)
+                            startActivity(intent)
+                        }
+
+                        private fun startFavoritesActivity(){
+                            val intent = Intent(this, FavoritesActivity::class.java)
+                            startActivity(intent)
+                        }
+                    }
+
+        }
